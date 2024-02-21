@@ -17,8 +17,7 @@ public class LoginController {
 
     @Autowired
     private LoginRequestService loginRequestService;
-    //prueba git
-
+    
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         String username = loginRequest.getUsername();
