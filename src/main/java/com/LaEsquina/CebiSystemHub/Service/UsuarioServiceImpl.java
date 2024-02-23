@@ -23,8 +23,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void deleteUsuarioById(Long id) {
+    public boolean deleteUsuarioById(Long id) {
         usuarioRepository.deleteById(id);
+		return false;
     }
 
     @Override

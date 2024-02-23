@@ -12,7 +12,7 @@ public interface UsuarioService {
     Usuario updateUsuario(Usuario usuario);
 
     // Método para eliminar un usuario por su ID
-    void deleteUsuarioById(Long id);
+    boolean deleteUsuarioById(Long id);
 
     // Método para buscar un usuario por su ID
     Usuario getUsuarioById(Long id);

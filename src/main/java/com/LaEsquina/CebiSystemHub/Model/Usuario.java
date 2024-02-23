@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -31,7 +33,7 @@ public class Usuario {
     @Column(name = "User_name")
     private String username;
 
-    @Column(name = "User_Password")
+    @Column(name = "User_Pasword")
     private String password;
 
     @Column(name = "Num_Telefono")
@@ -45,24 +47,21 @@ public class Usuario {
 
     @Column(name = "Activo")
     private boolean activo;
-
-
     
-    // Constructor
-    public Usuario(String nombre, String apellido, String email, String username, String password, String telefono, String numeroDocumento, String direccion, boolean activo) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.username = username;
-        this.password = password;
-        this.telefono = telefono;
-        this.numeroDocumento = numeroDocumento;
-        this.direccion = direccion;
-        this.activo = activo;
-    }
+    @ManyToOne
+    @JoinColumn(name = "ID_Rol")
+    private Rol rol;
+    
+    
 
 
-	public Long getId() {
-		return id;
+	public Rol getRol() {
+		return rol;
+	}
+
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 
