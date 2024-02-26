@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class UsuarioController {
 
     @Autowired
