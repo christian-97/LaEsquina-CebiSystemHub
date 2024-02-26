@@ -15,7 +15,7 @@ import com.LaEsquina.CebiSystemHub.Service.LoginRequestService;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class LoginController {
 
     @Autowired
