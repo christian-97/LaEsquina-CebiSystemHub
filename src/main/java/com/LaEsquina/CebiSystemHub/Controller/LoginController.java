@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.LaEsquina.CebiSystemHub.Model.LoginRequest;
+import com.LaEsquina.CebiSystemHub.Model.Usuario;
 import com.LaEsquina.CebiSystemHub.Service.LoginRequestService;
 
 @RestController

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -43,16 +45,19 @@ public class LoginRequest {
     @Column(name = "Direccion")
     private String direccion;
     
-    @Column(name = "ID_Rol")
-    private String rolID;
+    @ManyToOne
+    @JoinColumn(name = "ID_Rol")
+    private Rol rol;
     
     
     
-	public String getRol() {
-		return rolID;
+    
+    
+	public Rol getRol() {
+		return rol;
 	}
-	public void setRol(String rol) {
-		this.rolID = rol;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 	public String getTelefono() {
 		return telefono;

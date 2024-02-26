@@ -81,4 +81,16 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @PutMapping("/desactivar/{id}")
+    public ResponseEntity<Usuario> desactivarUsuario(@PathVariable Long id) {
+        Usuario usuarioExistente = usuarioService.getUsuarioById(id);
+        if (usuarioExistente != null) {
+            usuarioExistente.setActivo(false);
+            Usuario usuarioActualizado = usuarioService.updateUsuario(usuarioExistente);
+            return new ResponseEntity<>(usuarioActualizado, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
