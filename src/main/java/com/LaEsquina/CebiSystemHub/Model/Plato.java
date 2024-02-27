@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 
-
 @Entity
 @Table(name = "plato_13")
 public class Plato {
@@ -36,75 +35,84 @@ public class Plato {
     private boolean disponibilidad;
 
     @Column(name = "Imagen")
-    private byte[] imagen;
+    private String imagen;
+    
+    
 
-    // Constructor, getters y setters
+	public Plato(Long id, String productName, String descripcion, double precio, Categoria categoria,
+			boolean disponibilidad, String imagen) {
+		super();
+		this.id = id;
+		this.productName = productName;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		this.categoria = categoria;
+		this.disponibilidad = disponibilidad;
+		this.imagen = imagen;
+	}
+	
+	public Plato() {
+	    // Constructor sin argumentos
+	}
 
-    public Plato() {
-    }
 
-    public Plato(String productName, String descripcion, double precio, Categoria categoria, boolean disponibilidad, byte[] imagen) {
-        this.productName = productName;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.disponibilidad = disponibilidad;
-        this.imagen = imagen;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getProductName() {
+		return productName;
+	}
 
-    public String getProductName() {
-        return productName;
-    }
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public double getPrecio() {
+		return precio;
+	}
 
-    public double getPrecio() {
-        return precio;
-    }
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
+	public boolean isDisponibilidad() {
+		return disponibilidad;
+	}
 
-    public boolean isDisponibilidad() {
-        return disponibilidad;
-    }
+	public void setDisponibilidad(boolean disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
 
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
+	public String getImagen() {
+		return imagen;
+	}
 
-    public byte[] getImagen() {
-        return imagen;
-    }
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	} 
+    
+    
 
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
-    }
+    
 }

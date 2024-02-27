@@ -1,7 +1,9 @@
-package com.LaEsquina.CebiSystemHub.Service;
+package com.LaEsquina.CebiSystemHub.ServiceImpl;
 
 import com.LaEsquina.CebiSystemHub.Model.Usuario;
 import com.LaEsquina.CebiSystemHub.Repository.UsuarioRepository;
+import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
