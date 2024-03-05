@@ -1,5 +1,6 @@
 package com.LaEsquina.CebiSystemHub.ServiceImpl;
 
+import com.LaEsquina.CebiSystemHub.Model.IdRequest;
 import com.LaEsquina.CebiSystemHub.Model.Usuario;
 import com.LaEsquina.CebiSystemHub.Repository.UsuarioRepository;
 import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
@@ -7,6 +8,7 @@ import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -44,4 +46,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<Usuario> getUsuariosActivos() {
         return usuarioRepository.findAllByActivoTrue();
     }
-}
+    
+    
+    @Override
+    public Optional<Usuario> buscarPorId(IdRequest idRequest) {
+        Long id = idRequest.getId();
+        return usuarioRepository.findById(id);
+    }
+    
+
+ }

@@ -49,10 +49,17 @@ public class LoginRequest {
     @JoinColumn(name = "ID_Rol")
     private Rol rol;
     
+    @Column(name = "correo")
+    private String correo;
     
     
     
-    
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 	public Rol getRol() {
 		return rol;
 	}

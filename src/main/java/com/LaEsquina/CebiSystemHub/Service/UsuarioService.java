@@ -1,7 +1,9 @@
 package com.LaEsquina.CebiSystemHub.Service;
 
+import com.LaEsquina.CebiSystemHub.Model.IdRequest;
 import com.LaEsquina.CebiSystemHub.Model.Usuario;
 import java.util.List;
+import java.util.Optional;
 
 public interface UsuarioService {
 
@@ -22,4 +24,9 @@ public interface UsuarioService {
 
     // Método para buscar todos los usuarios activos
     List<Usuario> getUsuariosActivos();
+
+	Optional<Usuario> buscarPorId(IdRequest idRequest);
+
+   
+
 }

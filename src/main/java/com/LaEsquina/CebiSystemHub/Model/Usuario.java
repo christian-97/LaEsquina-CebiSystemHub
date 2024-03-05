@@ -48,11 +48,22 @@ public class Usuario {
     @Column(name = "Activo")
     private boolean activo;
     
+    @Column(name = "correo")
+    private String correo;
+    
     @ManyToOne
     @JoinColumn(name = "ID_Rol")
     private Rol rol;
-    
-    
+  
+
+	public String getCorreo() {
+		return correo;
+	}
+
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 
 
 	public Rol getRol() {
@@ -147,7 +158,14 @@ public class Usuario {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+
+
+
+	public Long getId() {
+		return id;
+	}
     
+	
     
 }
 
