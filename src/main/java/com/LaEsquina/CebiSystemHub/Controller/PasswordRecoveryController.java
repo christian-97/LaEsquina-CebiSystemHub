@@ -17,6 +17,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.CharsetDecoder;
 import java.util.Properties;
 
 @RestController
@@ -68,7 +69,9 @@ public class PasswordRecoveryController {
             
             message.setFrom(new InternetAddress("christhiangutierrezrosas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
-            message.setSubject("Recuperación de contraseña");
+            
+            String Cabecera = MimeUtility.encodeText("Recuperación de contraseña", "UTF-8", "B");
+            message.setSubject(Cabecera);
             
             // Codificar el nombre de usuario y la contraseña con UTF-8
             String nombreUsuarioCodificado = MimeUtility.encodeText(nombreUsuario, "UTF-8", "B");
