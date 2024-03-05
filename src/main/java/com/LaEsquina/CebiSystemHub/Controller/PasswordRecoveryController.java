@@ -33,7 +33,7 @@ public class PasswordRecoveryController {
             Usuario usuario = usuarioService.getUsuarioById(id);
             if (usuario != null) {
                 // Aquí se envía el correo electrónico
-                enviarCorreo(usuario.getCorreo(), usuario.getUsername(), usuario.getPassword(),usuario.getNombre());
+                enviarCorreo(usuario.getCorreo(), usuario.getUsername(), usuario.getPassword(),usuario.getNombre(),usuario.getApellido());
                 return ResponseEntity.ok("Correo enviado exitosamente.");
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado.");
@@ -43,7 +43,7 @@ public class PasswordRecoveryController {
         }
     }
 
-    private void enviarCorreo(String destinatario, String username, String contrasena, String nombre ) {
+    private void enviarCorreo(String destinatario, String username, String contrasena, String nombre,String apellido ) {
         // Configurar las propiedades del servidor de correo
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -79,7 +79,7 @@ public class PasswordRecoveryController {
             
             
             // Construir el cuerpo del mensaje
-            String cuerpoMensaje = "Hola " + nombre + ",\n\n"
+            String cuerpoMensaje = "Hola " + nombre +" "+ apellido+",\n\n"
                     + "Tu nombre de usuario es: " + username + "\n"
                     + "Tu contraseña es: " + contrasena + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
