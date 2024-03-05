@@ -3,13 +3,10 @@ package com.LaEsquina.CebiSystemHub.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.LaEsquina.CebiSystemHub.Model.IdRequest;
 import com.LaEsquina.CebiSystemHub.Model.Usuario;
 import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
@@ -17,10 +14,8 @@ import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeUtility;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Optional;
+
 import java.util.Properties;
 
 @RestController
@@ -68,31 +63,25 @@ public class PasswordRecoveryController {
         try {
             // Crear un mensaje de correo
             Message message = new MimeMessage(session);
-       
-            
             message.setFrom(new InternetAddress("christhiangutierrezrosas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             message.setSubject("Recuperación de contraseña");
             
-            // Codificar el texto del mensaje con UTF-8
-            String mensajeCodificado = MimeUtility.encodeText("Hola " + nombreUsuario + ",\n\n"
+            // Establecer el texto del mensaje directamente
+            String mensaje = "Hola " + nombreUsuario + ",\n\n"
                     + "Tu nombre de usuario es: " + nombreUsuario + "\n"
                     + "Tu contraseña es: " + contrasena + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
-                    + "Saludos,", "UTF-8", "B");
+                    + "Saludos,";
             
-             
-            message.setText(mensajeCodificado);
-            
-            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
-
+            message.setText(mensaje);
 
             // Enviar el mensaje
             Transport.send(message);
 
             System.out.println("Correo enviado exitosamente.");
 
-        } catch (MessagingException | UnsupportedEncodingException e) {
+        } catch (MessagingException e) {
             System.out.println("Error al enviar el correo: " + e.getMessage());
         }
     }
