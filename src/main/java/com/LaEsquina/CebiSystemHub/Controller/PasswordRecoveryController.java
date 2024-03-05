@@ -74,8 +74,10 @@ public class PasswordRecoveryController {
                     + "Tu contraseña es: " + contrasena + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
                     + "Saludos,");
+            
+            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
 
-            // Enviar el mensaje
+
             Transport.send(message);
 
             System.out.println("Correo enviado exitosamente.");
