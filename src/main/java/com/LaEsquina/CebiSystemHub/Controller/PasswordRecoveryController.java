@@ -17,7 +17,9 @@ import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -69,12 +71,16 @@ public class PasswordRecoveryController {
             message.setFrom(new InternetAddress("christhiangutierrezrosas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             message.setSubject("Recuperación de contraseña");
-            message.setText("Hola " + nombreUsuario + ",\n\n"
+            
+            // Codificar el texto del mensaje con UTF-8
+            String mensajeCodificado = MimeUtility.encodeText("Hola " + nombreUsuario + ",\n\n"
                     + "Tu nombre de usuario es: " + nombreUsuario + "\n"
                     + "Tu contraseña es: " + contrasena + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
-                    + "Saludos,");
+                    + "Saludos,", "UTF-8", "B");
             
+            message.setText(mensajeCodificado);
+
             // Establecer la codificación de caracteres
             message.setHeader("Content-Type", "text/plain; charset=UTF-8");
 
@@ -83,7 +89,7 @@ public class PasswordRecoveryController {
 
             System.out.println("Correo enviado exitosamente.");
 
-        } catch (MessagingException e) {
+        } catch (MessagingException | UnsupportedEncodingException e) {
             System.out.println("Error al enviar el correo: " + e.getMessage());
         }
     }
