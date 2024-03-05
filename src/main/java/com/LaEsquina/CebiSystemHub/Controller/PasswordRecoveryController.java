@@ -80,8 +80,8 @@ public class PasswordRecoveryController {
             // Construir el cuerpo del mensaje
             String cuerpoMensaje = "Hola " + nombreUsuario + ",\n\n"
                     + "Tu nombre de usuario es: " + nombreUsuarioCodificado + "\n"
-                    + "Tu contraseña es: " + contrasenaCodificada + "\n\n"
-                    + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
+                    + "Tu"+ MimeUtility.encodeText("contraseña es:", "UTF-8", "B") + contrasenaCodificada + "\n\n"
+                    + MimeUtility.encodeText("Por favor, cambia tu contraseña después de iniciar sesión.\n\n")
                     + "Saludos,";
                          
             message.setText(cuerpoMensaje.toString());
