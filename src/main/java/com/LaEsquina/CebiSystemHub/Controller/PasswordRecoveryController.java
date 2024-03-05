@@ -80,8 +80,8 @@ public class PasswordRecoveryController {
             
             // Construir el cuerpo del mensaje
             String cuerpoMensaje = "Hola " + nombre + ",\n\n"
-                    + "Tu nombre de usuario es: " + nombreUsuarioCodificado + "\n"
-                    + "Tu contraseña es: " + contrasenaCodificada + "\n\n"
+                    + "Tu nombre de usuario es: " + username + "\n"
+                    + "Tu contraseña es: " + contrasena + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
                     + "Saludos,";
 
