@@ -69,7 +69,7 @@ public class PasswordRecoveryController {
             // Crear un mensaje de correo
             Message message = new MimeMessage(session);
        
-            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
+            
             message.setFrom(new InternetAddress("christhiangutierrezrosas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             message.setSubject("Recuperación de contraseña");
@@ -80,6 +80,8 @@ public class PasswordRecoveryController {
                     + "Tu contraseña es: " + contrasena + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
                     + "Saludos,", "UTF-8", "B");
+            
+            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
             
             message.setText(mensajeCodificado);
 
