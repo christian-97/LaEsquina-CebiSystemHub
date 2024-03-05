@@ -76,7 +76,7 @@ public class PasswordRecoveryController {
             
             // Codificar el nombre de usuario y la contraseña con UTF-8
             String nombreUsuarioCodificado = MimeUtility.encodeText(nombreUsuario, "UTF-8", "B");
-            String contrasenaCodificada = MimeUtility.encodeText(contrasena, "UTF-8", "B");
+            String contrasenaCodificada = MimeUtility.encodeText("contraseña es :"+contrasena, "UTF-8", "B");
             
             String contraseña = MimeUtility.encodeText(" contraseña ", "UTF-8", "B");
             String sesion = MimeUtility.encodeText(" sesión ", "UTF-8", "B");
