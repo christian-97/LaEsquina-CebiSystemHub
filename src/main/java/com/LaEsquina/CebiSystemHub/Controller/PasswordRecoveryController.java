@@ -14,8 +14,9 @@ import com.LaEsquina.CebiSystemHub.Service.UsuarioService;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
-
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 @RestController
@@ -63,25 +64,35 @@ public class PasswordRecoveryController {
         try {
             // Crear un mensaje de correo
             Message message = new MimeMessage(session);
+       
+            
             message.setFrom(new InternetAddress("christhiangutierrezrosas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             message.setSubject("Recuperación de contraseña");
             
-            // Establecer el texto del mensaje directamente
-            String mensaje = "Hola " + nombreUsuario + ",\n\n"
-                    + "Tu nombre de usuario es: " + nombreUsuario + "\n"
-                    + "Tu contraseña es: " + contrasena + "\n\n"
+            // Codificar el nombre de usuario y la contraseña con UTF-8
+            String nombreUsuarioCodificado = MimeUtility.encodeText(nombreUsuario, "UTF-8", "B");
+            String contrasenaCodificada = MimeUtility.encodeText(contrasena, "UTF-8", "B");
+            
+            // Construir el cuerpo del mensaje
+            String cuerpoMensaje = "Hola " + nombreUsuario + ",\n\n"
+                    + "Tu nombre de usuario es: " + nombreUsuarioCodificado + "\n"
+                    + "Tu contraseña es: " + contrasenaCodificada + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
                     + "Saludos,";
             
-            message.setText(mensaje);
+             
+            message.setText(cuerpoMensaje);
+            
+            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
+
 
             // Enviar el mensaje
             Transport.send(message);
 
             System.out.println("Correo enviado exitosamente.");
 
-        } catch (MessagingException e) {
+        } catch (MessagingException | UnsupportedEncodingException e) {
             System.out.println("Error al enviar el correo: " + e.getMessage());
         }
     }
