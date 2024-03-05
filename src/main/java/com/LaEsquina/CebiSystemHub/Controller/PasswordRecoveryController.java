@@ -80,7 +80,7 @@ public class PasswordRecoveryController {
                     + "Tu contraseña es: " + contrasenaCodificada + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
                     + "Saludos,";
-            
+            message.setText("UTF-8");
              
             message.setText(cuerpoMensaje);
             
