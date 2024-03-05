@@ -17,7 +17,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.CharsetDecoder;
 import java.util.Properties;
 
 @RestController
@@ -34,7 +33,7 @@ public class PasswordRecoveryController {
             Usuario usuario = usuarioService.getUsuarioById(id);
             if (usuario != null) {
                 // Aquí se envía el correo electrónico
-                enviarCorreo(usuario.getCorreo(), usuario.getUsername(), usuario.getPassword());
+                enviarCorreo(usuario.getCorreo(), usuario.getUsername(), usuario.getPassword(),usuario.getNombre());
                 return ResponseEntity.ok("Correo enviado exitosamente.");
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado.");
@@ -44,7 +43,7 @@ public class PasswordRecoveryController {
         }
     }
 
-    private void enviarCorreo(String destinatario, String nombreUsuario, String contrasena) {
+    private void enviarCorreo(String destinatario, String username, String contrasena, String nombre ) {
         // Configurar las propiedades del servidor de correo
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -75,12 +74,12 @@ public class PasswordRecoveryController {
             message.setSubject(Cabecera);
             
             // Codificar el nombre de usuario y la contraseña con UTF-8
-            String nombreUsuarioCodificado = MimeUtility.encodeText(nombreUsuario, "UTF-8", "B");
-            String contrasenaCodificada = MimeUtility.encodeText("contraseña es :"+contrasena, "UTF-8", "B");
+            String nombreUsuarioCodificado = MimeUtility.encodeText(nombre, "UTF-8", "B");
+            String contrasenaCodificada = MimeUtility.encodeText(contrasena, "UTF-8", "B");
             
             
             // Construir el cuerpo del mensaje
-            String cuerpoMensaje = "Hola " + nombreUsuarioCodificado + ",\n\n"
+            String cuerpoMensaje = "Hola " + nombre + ",\n\n"
                     + "Tu nombre de usuario es: " + nombreUsuarioCodificado + "\n"
                     + "Tu contraseña es: " + contrasenaCodificada + "\n\n"
                     + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
