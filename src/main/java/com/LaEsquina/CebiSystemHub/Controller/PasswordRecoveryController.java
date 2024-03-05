@@ -34,7 +34,7 @@ public class PasswordRecoveryController {
             Usuario usuario = usuarioService.getUsuarioById(id);
             if (usuario != null) {
                 // Aquí se envía el correo electrónico
-                enviarCorreo(usuario.getCorreo(), usuario.getNombre(), usuario.getPassword());
+                enviarCorreo(usuario.getCorreo(), usuario.getUsername(), usuario.getPassword());
                 return ResponseEntity.ok("Correo enviado exitosamente.");
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado.");
@@ -78,15 +78,14 @@ public class PasswordRecoveryController {
             String nombreUsuarioCodificado = MimeUtility.encodeText(nombreUsuario, "UTF-8", "B");
             String contrasenaCodificada = MimeUtility.encodeText("contraseña es :"+contrasena, "UTF-8", "B");
             
-            String contraseña = MimeUtility.encodeText(" contraseña ", "UTF-8", "B");
-            String sesion = MimeUtility.encodeText(" sesión ", "UTF-8", "B");
             
             // Construir el cuerpo del mensaje
-            String cuerpoMensaje = "Hola " + nombreUsuario + ",\n\n"
+            String cuerpoMensaje = "Hola " + nombreUsuarioCodificado + ",\n\n"
                     + "Tu nombre de usuario es: " + nombreUsuarioCodificado + "\n"
-                    + "Tu"+ contraseña + contrasenaCodificada + "\n\n"
-                    + "Por favor, cambia tu"+contraseña +"después de iniciar "+sesion+".\n\n"
+                    + "Tu contraseña es: " + contrasenaCodificada + "\n\n"
+                    + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
                     + "Saludos,";
+
                          
             message.setText(cuerpoMensaje);
             
