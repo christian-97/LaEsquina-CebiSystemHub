@@ -71,6 +71,8 @@ public class PasswordRecoveryController {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             
             String Cabecera = MimeUtility.encodeText("Recuperación de contraseña CebiSystemHub", "UTF-8", "B");
+            String contraseña = MimeUtility.encodeText(" contraseña ", "UTF-8", "B");
+            String sesion = MimeUtility.encodeText(" sesión ", "UTF-8", "B");
             message.setSubject(Cabecera);
             
             // Codificar el nombre de usuario y la contraseña con UTF-8
@@ -80,8 +82,8 @@ public class PasswordRecoveryController {
             // Construir el cuerpo del mensaje
             String cuerpoMensaje = "Hola " + nombreUsuario + ",\n\n"
                     + "Tu nombre de usuario es: " + nombreUsuarioCodificado + "\n"
-                    + "Tu"+ MimeUtility.encodeText("contraseña es:", "UTF-8", "B") + contrasenaCodificada + "\n\n"
-                    + MimeUtility.encodeText("Por favor, cambia tu contraseña después de iniciar sesión.\n\n")
+                    + "Tu"+ contraseña + contrasenaCodificada + "\n\n"
+                    + "Por favor, cambia tu"+contraseña +"después de iniciar "+sesion+".\n\n"
                     + "Saludos,";
                          
             message.setText(cuerpoMensaje.toString());
