@@ -86,7 +86,7 @@ public class PasswordRecoveryController {
                     + "Por favor, cambia tu"+contraseña +"después de iniciar "+sesion+".\n\n"
                     + "Saludos,";
                          
-            message.setText(cuerpoMensaje.toString());
+            message.setText(cuerpoMensaje);
             
             message.setHeader("Content-Type", "text/plain; charset=UTF-8");
 
