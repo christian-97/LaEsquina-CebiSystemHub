@@ -70,7 +70,7 @@ public class PasswordRecoveryController {
             message.setFrom(new InternetAddress("christhiangutierrezrosas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             
-            String Cabecera = MimeUtility.encodeText("Recuperación de contraseña", "UTF-8", "B");
+            String Cabecera = MimeUtility.encodeText("Recuperación de contraseña CebiSystemHub", "UTF-8", "B");
             message.setSubject(Cabecera);
             
             // Codificar el nombre de usuario y la contraseña con UTF-8
