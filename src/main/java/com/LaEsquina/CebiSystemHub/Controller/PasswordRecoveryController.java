@@ -79,11 +79,17 @@ public class PasswordRecoveryController {
             
             
             // Construir el cuerpo del mensaje
-            String cuerpoMensaje = "Hola " + nombre +" "+ apellido+",\n\n"
-                    + "Tu nombre de usuario es: " + username + "\n"
-                    + "Tu contraseña es: " + contrasena + "\n\n"
-                    + "Por favor, cambia tu contraseña después de iniciar sesión.\n\n"
-                    + "Saludos,";
+            String cuerpoMensaje = "Estimado(a) " + nombre + " " + apellido + ",\n\n"
+                    + "Espero que este mensaje te encuentre bien. Quisiera informarte que hemos recibido una solicitud para recuperar tu contraseña en nuestro sistema.\n\n"
+                    + "A continuación, encontrarás tus credenciales de acceso:\n\n"
+                    + "Nombre de usuario: " + username + "\n"
+                    + "Contraseña: " + contrasena + "\n\n"
+                    + "Por razones de seguridad, te recomendamos cambiar tu contraseña una vez que hayas iniciado sesión.\n\n"
+                    + "Si no solicitaste esta acción, por favor ignora este mensaje o ponte en contacto con nuestro equipo de soporte.\n\n"
+                    + "Gracias por confiar en nosotros.\n\n"
+                    + "Atentamente,\n"
+                    + "Cebicheria La Esquina";
+
 
                          
             message.setText(cuerpoMensaje);
