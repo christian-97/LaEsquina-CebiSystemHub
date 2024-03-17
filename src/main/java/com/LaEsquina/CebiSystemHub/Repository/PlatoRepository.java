@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlatoRepository extends JpaRepository<Plato, Long> {
-    // Aquí puedes agregar métodos personalizados para consultar la base de datos si es necesario
+    
 }
