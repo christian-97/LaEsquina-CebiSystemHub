@@ -61,10 +61,10 @@ public class PedidoController {
     }
     
     
-    @GetMapping("/pedido-usuario")
-    public ResponseEntity<List<Pedido>> getPedidosByIdUsuario(@RequestBody PedidoUsuarioRequest pedidoUsuarioRequest) {
-        Long idUsuario = pedidoUsuarioRequest.getIdUsuario();
+    @GetMapping("/pedido-usuario/{idUsuario}")
+    public ResponseEntity<List<Pedido>> getPedidosByIdUsuario(@PathVariable Long idUsuario) {
         List<Pedido> pedidos = pedidoService.findPedidosByIdUsuario(idUsuario);
         return new ResponseEntity<>(pedidos, HttpStatus.OK);
     }
+
 }
