@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,20 +17,24 @@ public class DetallePedido {
     @Column(name = "ID_Pedido")
     private Long idPedido;
 
-    @Id
-    @Column(name = "ID_Producto")
+    
     private Long idProducto;
 
     @Column(name = "Cantidad")
     private int cantidad;
+    
 
-	public Long getIdPedido() {
+    public Long getIdPedido() {
 		return idPedido;
 	}
 
 	public void setIdPedido(Long idPedido) {
 		this.idPedido = idPedido;
 	}
+
+	
+
+	
 
 	public Long getIdProducto() {
 		return idProducto;

@@ -16,11 +16,7 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
 	@Autowired
     private DetallePedidoRepository detallePedidoRepository;
 
-	@Override
-    public List<DetallePedido> obtenerTodosDetallesPedido() {
-        return detallePedidoRepository.findAll();
-    }
-
+	
 	@Override
     public DetallePedido obtenerDetallePedidoPorId(Long idPedido, Long idProducto) {
         return detallePedidoRepository.findByIdPedidoAndIdProducto(idPedido, idProducto).orElse(null);
@@ -41,10 +37,16 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
         // Busca el detalle de pedido por su idPedido e idProducto
         DetallePedidoId detallePedidoId = new DetallePedidoId(idPedido, idProducto);
         DetallePedido detallePedido = detallePedidoRepository.findById(detallePedidoId)
-                                        .orElseThrow(() -> new IllegalArgumentException("No se encontró el detalle de pedido"));
-
-        
+                                        .orElseThrow(() -> new IllegalArgumentException("No se encontró el detalle de pedido"));        
         detallePedidoRepository.delete(detallePedido);
     }
+
+    @Override
+    public List<DetallePedido> obtenerDetallesPedidoPorIdPedido(Long idPedido) {
+        return detallePedidoRepository.findByIdPedido(idPedido);
+    }
+    
+    
+
 
 }

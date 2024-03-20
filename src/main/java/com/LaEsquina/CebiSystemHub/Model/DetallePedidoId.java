@@ -12,6 +12,11 @@ public class DetallePedidoId implements Serializable{
 	private Long idPedido;
 
     private Long idProducto;
+    
+    public DetallePedidoId() {
+    }
+
+    
 
 	public Long getIdPedido() {
 		return idPedido;

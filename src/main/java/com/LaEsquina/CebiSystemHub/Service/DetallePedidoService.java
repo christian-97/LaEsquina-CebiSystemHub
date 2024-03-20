@@ -5,7 +5,7 @@ import java.util.List;
 import com.LaEsquina.CebiSystemHub.Model.DetallePedido;
 
 public interface DetallePedidoService {
-    List<DetallePedido> obtenerTodosDetallesPedido();
+	List<DetallePedido> obtenerDetallesPedidoPorIdPedido(Long idPedido);
     DetallePedido obtenerDetallePedidoPorId(Long idPedido, Long idProducto);
     void guardarDetallePedido(DetallePedido detallePedido);
     void actualizarDetallePedido(DetallePedido detallePedido);
