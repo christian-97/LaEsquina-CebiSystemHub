@@ -32,7 +32,6 @@ public class PasswordRecoveryController {
             Long id = idRequest.getId();
             Usuario usuario = usuarioService.getUsuarioById(id);
             if (usuario != null) {
-                // Aquí se envía el correo electrónico
                 enviarCorreo(usuario.getCorreo(), usuario.getUsername(), usuario.getPassword(),usuario.getNombre(),usuario.getApellido());
                 return ResponseEntity.ok("Correo enviado exitosamente.");
             } else {
