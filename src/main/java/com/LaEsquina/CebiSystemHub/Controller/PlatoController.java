@@ -5,20 +5,17 @@ import com.LaEsquina.CebiSystemHub.Model.PlatoResponse;
 import com.LaEsquina.CebiSystemHub.Service.PlatoService;
 import com.LaEsquina.CebiSystemHub.Service.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 
@@ -27,7 +24,7 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.io.File;
+
 import java.util.ArrayList;
 
 
